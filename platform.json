@@ -8,7 +8,10 @@
     "engines": {
         "platformio": "<5"
     },
-    "repository": "https://bitbucket.org/ccsg-res/commonsense-platformio-platform.git",
+    "repository": {
+        "type": "git",
+        "url": "https://bitbucket.org/ccsg-res/commonsense-platformio-platform.git"
+    },
     "version": "0.0.1",
     "packageRepositories": [
         "https://dl.bintray.com/platformio/dl-packages/manifest.json",
@@ -45,4 +48,5 @@
             "optional": true,
             "version": "~2.1000.0"
         }
+    }
 }
