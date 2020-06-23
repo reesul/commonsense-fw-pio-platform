@@ -85,3 +85,5 @@ if ("samd" in build_mcu) or ("samc" in build_mcu):
 
 # copy CCFLAGS to ASFLAGS (-x assembler-with-cpp mode)
 env.Append(ASFLAGS=env.get("CCFLAGS", [])[:])
+
+env.SConscript("bare/bare-commonsense.py")

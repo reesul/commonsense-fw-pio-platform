@@ -49,6 +49,10 @@ class CommonsensePlatform(PlatformBase):
             "board_build.core", self.board_config(variables.get("board")).get(
                 "build.core", "arduino")).lower()
 
+        # Force use of CMSIS and Atmel packages for CommonSense
+        self.packages["framework-cmsis"]["optional"] = False
+        self.packages["framework-cmsis-atmel"]["optional"] = False
+
         # if "arduino" in variables.get("pioframework", []):
         #     framework_package = "framework-arduino-%s" % (
         #         "sam" if board.get("build.mcu", "").startswith("at91") else "samd")
