@@ -25,6 +25,7 @@
     "variant": "samd51"
   },
   "debug": {
+    "tool": "jlink",
     "jlink_device": "ATSAMD51P20",
     "openocd_chipname": "at91samd51p20",
     "openocd_target": "atsame5x",

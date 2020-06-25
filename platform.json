@@ -2,7 +2,7 @@
     "name": "commonsense",
     "title": "CCSG CommonSense",
     "description": "CCSG CommonSense is a hardware platform using the Atmel SAMD51 Cortex M4 for various IoT applications",
-    "url": "https://bitbucket.org/ccsg-res/commonsense-platformio-platform/src/master/",
+    "url": "https://bitbucket.org/ccsg-res/commonsense-pio-platform/src/master/",
     "homepage": "http://ccsg.ece.cmu.edu",
     "license": "MIT",
     "engines": {
@@ -10,10 +10,11 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://bitbucket.org/ccsg-res/commonsense-platformio-platform.git"
+        "url": "https://bitbucket.org/ccsg-res/commonsense-pio-platform.git"
     },
-    "version": "0.0.1",
+    "version": "0.1.0",
     "packageRepositories": [
+        "https://bitbucket.org/ccsg-res/commonsense-pio-framework/src/master/manifest.json",
         "https://dl.bintray.com/platformio/dl-packages/manifest.json",
         "http://dl.platformio.org/packages/manifest.json",
         "https://raw.githubusercontent.com/eerimoq/simba/master/make/platformio/manifest.json"
@@ -25,13 +26,18 @@
         },
         "framework-cmsis": {
             "type": "framework",
-            "optional": true,
+            "optional": false,
             "version": "~1.40500.0"
         },
         "framework-cmsis-atmel": {
             "type": "framework",
-            "optional": true,
+            "optional": false,
             "version": "~1.2.0"
+        },
+        "framework-commonsense": {
+            "type": "framework", 
+            "optional": false,
+            "version": ">=0.0.1"
         },
         "tool-bossac": {
             "type": "uploader",
