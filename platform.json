@@ -19,6 +19,12 @@
         "http://dl.platformio.org/packages/manifest.json",
         "https://raw.githubusercontent.com/eerimoq/simba/master/make/platformio/manifest.json"
       ],
+    "frameworks": {
+        "commonsense":{
+            "package": "framework-commonsense",
+            "script": "builder/frameworks/commonsense.py"
+        }
+    },
     "packages": {
         "toolchain-gccarmnoneeabi": {
             "type": "toolchain",
