@@ -50,8 +50,14 @@ class CommonsensePlatform(PlatformBase):
                 "build.core", "arduino")).lower()
 
         # Force use of CMSIS and Atmel packages for CommonSense
+        framework_package = "framework-commonsense"
+
         self.packages["framework-cmsis"]["optional"] = False
         self.packages["framework-cmsis-atmel"]["optional"] = False
+        self.packages[framework_package]["optional"] = False
+
+        
+
 
         # if "arduino" in variables.get("pioframework", []):
         #     framework_package = "framework-arduino-%s" % (
