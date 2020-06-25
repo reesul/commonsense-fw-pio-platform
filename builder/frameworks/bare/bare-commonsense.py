@@ -108,14 +108,14 @@ env.Append(
 
     LIBS=["m"]
 )
-p = env.get("$PLATFORMIO_PLATFORMS_DIR")
-print("\n\n\n\n\n")
-print(p)
-print("\n\n\n\n")
+# p = env.get("$PLATFORMIO_PLATFORMS_DIR")
+# print("\n\n\n\n\n")
+# print(p)
+# print("\n\n\n\n")
 
-p = os.path.join(p, "commonsense", "linker", "commonsense_linker.ld")
+# p = os.path.join(p, "commonsense", "linker", "commonsense_linker.ld")
  
 
-if not board.get("build.ldscript", ""):
-    # Will this path work? Unsure about the env.get. Would like to avoid making a new framework if possible since it'd be so minimal
-    env.Replace(LDSCRIPT_PATH=p)
+# if not board.get("build.ldscript", ""):
+#     # Will this path work? Unsure about the env.get. Would like to avoid making a new framework if possible since it'd be so minimal
+#     env.Replace(LDSCRIPT_PATH=p)

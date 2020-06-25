@@ -112,4 +112,4 @@ env.Append(
 if not board.get("build.ldscript", ""):
     # Will this path work? Unsure about the env.get. Would like to avoid making a new framework if possible since it'd be so minimal
     linker_path = os.path.join(FRAMEWORK_DIR, "linker", "commonsense_linker.ld")
-    env.Replace(LDSCRIPT_PATH=p)
+    env.Replace(LDSCRIPT_PATH=linker_path)

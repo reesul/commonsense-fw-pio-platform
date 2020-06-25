@@ -43,6 +43,7 @@
     ]
   },
   "frameworks": [
+    "commonsense"
   ],
   "url": "http://ccsg.ece.cmu.edu/wp/index.php/people/ccsg.ece.cmu.edu",
   "vendor": "CMU CCSG"
