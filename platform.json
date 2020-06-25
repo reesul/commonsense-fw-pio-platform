@@ -12,7 +12,7 @@
         "type": "git",
         "url": "https://bitbucket.org/ccsg-res/commonsense-pio-platform.git"
     },
-    "version": "0.1.0",
+    "version": "0.2.0",
     "packageRepositories": [
         "https://bitbucket.org/ccsg-res/commonsense-pio-framework/src/master/manifest.json",
         "https://dl.bintray.com/platformio/dl-packages/manifest.json",
