@@ -39,6 +39,47 @@ assert all(os.path.isdir(d) for d in (CMSIS_DIR, CMSIS_ATMEL_DIR, FRAMEWORK_DIR)
 
 
 env.Append(
+    ASFLAGS=["-x", "assembler-with-cpp"],
+
+    CFLAGS=[
+        "-std=gnu11"
+    ],
+
+    CCFLAGS=[
+        "-Os",  # optimize for size
+        "-ffunction-sections",  # place each function in its own section
+        "-fdata-sections",
+        "-Wall",
+        "-mthumb",
+        "-nostdlib",
+        "--param", "max-inline-insns-single=500"
+    ],
+
+    CXXFLAGS=[
+        "-fno-rtti",
+        "-fno-exceptions",
+        "-std=gnu++11",
+        "-fno-threadsafe-statics"
+    ],
+
+    CPPDEFINES=[
+        ("F_CPU", "$BOARD_F_CPU")
+    ],
+
+    LINKFLAGS=[
+        "-Os",
+        "-mthumb",
+        # "-Wl,--cref", # don't enable it, it prints Cross Reference Table
+        "-Wl,--gc-sections",
+        "-Wl,--check-sections",
+        "-Wl,--unresolved-symbols=report-all",
+        "-Wl,--warn-common",
+        "-Wl,--warn-section-align",
+        "--specs=nosys.specs",
+        "--specs=nano.specs"
+    ],
+
+    LIBS=["m"],
 
     CPPPATH=[
         os.path.join(CMSIS_DIR, "CMSIS", "Include"),
@@ -50,8 +91,22 @@ env.Append(
     LIBPATH=[
         os.path.join(CMSIS_DIR, "CMSIS", "Lib", "GCC"),
     ],
-    
 )
+
+if "BOARD" in env:
+    env.Append(
+        CCFLAGS=[
+            "-mcpu=%s" % board.get("build.cpu")
+        ],
+        LINKFLAGS=[
+            "-mcpu=%s" % board.get("build.cpu")
+        ]
+    )
+
+if ("samd" in build_mcu) or ("samc" in build_mcu):
+    env.Append(
+
+    )
 
 env.Prepend(
     CCFLAGS=[
@@ -67,49 +122,64 @@ env.Prepend(
     LIBS=["arm_cortexM4lf_math"]
 )
 
-env.Append(
-    ASFLAGS=["-x", "assembler-with-cpp"],
-
-    CFLAGS=[
-        "-std=gnu11"
-    ],
-
-    CCFLAGS=[
-        "-Os",  # optimize for size
-        "-ffunction-sections",  # place each function in its own section
-        "-fdata-sections",
-        "-Wall",
-        "-mcpu=%s" % board.get("build.cpu"),
-        "-mthumb",
-        "-nostdlib",
-        "--param", "max-inline-insns-single=500"
-    ],
-
-    CXXFLAGS=[
-        "-fno-rtti",
-        "-fno-exceptions",
-        "-std=gnu++11",
-        "-fno-threadsafe-statics"
-    ],
-
-    LINKFLAGS=[
-        "-Os",
-        "-mcpu=%s" % board.get("build.cpu"),
-        "-mthumb",
-        "-Wl,--gc-sections",
-        "-Wl,--check-sections",
-        "-Wl,--unresolved-symbols=report-all",
-        "-Wl,--warn-common",
-        "-Wl,--warn-section-align"
-    ],
-
-    LIBS=["m"]
-)
+# copy CCFLAGS to ASFLAGS (-x assembler-with-cpp mode)
+env.Append(ASFLAGS=env.get("CCFLAGS", [])[:])
 
 
- 
 
 if not board.get("build.ldscript", ""):
-    # Will this path work? Unsure about the env.get. Would like to avoid making a new framework if possible since it'd be so minimal
     linker_path = os.path.join(FRAMEWORK_DIR, "linker", "commonsense_linker.ld")
     env.Replace(LDSCRIPT_PATH=linker_path)
+    env.Append(
+        LIBPATH=[linker_path]
+    )
+
+#This appears to be a repeat; probably safe to delete -Reese 6/24/20
+# env.Append(
+#     ASFLAGS=["-x", "assembler-with-cpp"],
+
+#     CFLAGS=[
+#         "-std=gnu11"
+#     ],
+
+#     CCFLAGS=[
+#         "-Os",  # optimize for size
+#         "-ffunction-sections",  # place each function in its own section
+#         "-fdata-sections",
+#         "-Wall",
+#         "-mcpu=%s" % board.get("build.cpu"),
+#         "-mthumb",
+#         "-nostdlib",
+#         "--param", "max-inline-insns-single=500"
+#     ],
+
+#     CXXFLAGS=[
+#         "-fno-rtti",
+#         "-fno-exceptions",
+#         "-std=gnu++11",
+#         "-fno-threadsafe-statics"
+#     ],
+
+#     LINKFLAGS=[
+#         "-Os",
+#         "-mcpu=%s" % board.get("build.cpu"),
+#         "-mthumb",
+#         "-Wl,--gc-sections",
+#         "-Wl,--check-sections",
+#         "-Wl,--unresolved-symbols=report-all",
+#         "-Wl,--warn-common",
+#         "-Wl,--warn-section-align"
+#     ],
+
+#     LIBS=["m"]
+# )
+
+libs = []
+
+libs.append(env.BuildLibrary(
+    os.path.join("$BUILD_DIR", "FrameworkCommonSense"),
+    os.path.join(FRAMEWORK_DIR, "src")
+))
+
+env.Prepend(LIBS=libs)
+ 
