@@ -10,11 +10,11 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://bitbucket.org/ccsg-res/commonsense-pio-platform.git"
+        "url": "https://git@bitbucket.org/ccsg-res/commonsense-pio-platform.git"
     },
     "version": "0.2.0",
     "packageRepositories": [
-        "https://bitbucket.org/ccsg-res/commonsense-pio-framework/src/master/manifest.json",
+        "https://bitbucket.org/ccsg-res/commonsense-pio-framework/raw/HEAD/manifest.json",
         "https://dl.bintray.com/platformio/dl-packages/manifest.json",
         "http://dl.platformio.org/packages/manifest.json",
         "https://raw.githubusercontent.com/eerimoq/simba/master/make/platformio/manifest.json"
