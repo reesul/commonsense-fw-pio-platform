@@ -131,46 +131,6 @@ if not board.get("build.ldscript", ""):
         LIBPATH=[linker_path]
     )
 
-#This appears to be a repeat; probably safe to delete -Reese 6/24/20
-# env.Append(
-#     ASFLAGS=["-x", "assembler-with-cpp"],
-
-#     CFLAGS=[
-#         "-std=gnu11"
-#     ],
-
-#     CCFLAGS=[
-#         "-Os",  # optimize for size
-#         "-ffunction-sections",  # place each function in its own section
-#         "-fdata-sections",
-#         "-Wall",
-#         "-mcpu=%s" % board.get("build.cpu"),
-#         "-mthumb",
-#         "-nostdlib",
-#         "--param", "max-inline-insns-single=500"
-#     ],
-
-#     CXXFLAGS=[
-#         "-fno-rtti",
-#         "-fno-exceptions",
-#         "-std=gnu++11",
-#         "-fno-threadsafe-statics"
-#     ],
-
-#     LINKFLAGS=[
-#         "-Os",
-#         "-mcpu=%s" % board.get("build.cpu"),
-#         "-mthumb",
-#         "-Wl,--gc-sections",
-#         "-Wl,--check-sections",
-#         "-Wl,--unresolved-symbols=report-all",
-#         "-Wl,--warn-common",
-#         "-Wl,--warn-section-align"
-#     ],
-
-#     LIBS=["m"]
-# )
-
 libs = []
 
 libs.append(env.BuildLibrary(
@@ -180,3 +140,7 @@ libs.append(env.BuildLibrary(
 
 env.Prepend(LIBS=libs)
  
+ #TODO: make board specific files that have a few different flags
+env.append(
+    CPPDEFINES = ("__CS_V_2_0__")
+)
