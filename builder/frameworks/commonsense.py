@@ -141,6 +141,6 @@ libs.append(env.BuildLibrary(
 env.Prepend(LIBS=libs)
  
  #TODO: make board specific files that have a few different flags
-env.append(
+env.Append(
     CPPDEFINES = ("__CS_V_2_0__")
 )
