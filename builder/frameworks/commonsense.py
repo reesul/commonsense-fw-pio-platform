@@ -135,7 +135,7 @@ libs = []
 
 libs.append(env.BuildLibrary(
     os.path.join("$BUILD_DIR", "FrameworkCommonSense"),
-    os.path.join(FRAMEWORK_DIR, "src")
+    os.path.join(FRAMEWORK_DIR, "core")
 ))
 
 env.Prepend(LIBS=libs)
