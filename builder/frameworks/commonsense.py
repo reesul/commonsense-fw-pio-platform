@@ -91,6 +91,7 @@ env.Append(
 
     LIBPATH=[
         os.path.join(CMSIS_DIR, "CMSIS", "Lib", "GCC"),
+        os.path.join(FRAMEWORK_DIR, "linker")
     ],
 )
 
@@ -125,12 +126,8 @@ env.Append(ASFLAGS=env.get("CCFLAGS", [])[:])
 
 # include a path to the linker script. This will make the binary start at the Reset_Handler function, which calls main after some initialization
 if not board.get("build.ldscript", ""):
-    # linker_path = os.path.join(FRAMEWORK_DIR, "linker", "commonsense_linker.ld")
-    linker_path = os.path.join(FRAMEWORK_DIR, "linker")
     env.Replace(LDSCRIPT_PATH="commonsense_linker.ld")
-    env.Append(
-        LIBPATH=[linker_path]
-    )
+
 
 libs = []
 
