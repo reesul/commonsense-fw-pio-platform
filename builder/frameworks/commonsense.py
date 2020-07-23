@@ -85,6 +85,7 @@ env.Append(
         os.path.join(CMSIS_DIR, "CMSIS", "Include"),
         os.path.join(CMSIS_ATMEL_DIR, "CMSIS", "Device", "ATMEL"),
         os.path.join(CMSIS_ATMEL_DIR, "CMSIS", "Device", "ATMEL", board.get("build.variant")),
+        os.path.join(FRAMEWORK_DIR),
         os.path.join(FRAMEWORK_DIR, "core")
     ],
 
