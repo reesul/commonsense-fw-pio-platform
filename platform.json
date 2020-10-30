@@ -63,7 +63,7 @@
         },
         "framework-envisense": {
               "type": "framework",
-              "optional": true,
+              "optional": false,
               "version": "~3.2.7"
         }
     }
