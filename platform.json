@@ -21,6 +21,10 @@
         "https://raw.githubusercontent.com/eerimoq/simba/master/make/platformio/manifest.json"
       ],
     "frameworks": {
+        "envisense":{
+            "package": "framework-envisense",
+            "script": "builder/frameworks/commonsense.py"
+        },
         "commonsense":{
             "package": "framework-commonsense",
             "script": "builder/frameworks/commonsense.py"
@@ -41,6 +45,11 @@
             "optional": false,
             "version": "~1.2.0"
         },
+        "framework-envisense": {
+            "type": "framework",
+            "optional": false,
+            "version": "~3.2.7"
+        },
         "framework-commonsense": {
             "type": "framework",
             "optional": true,
@@ -60,11 +69,6 @@
             "type": "uploader",
             "optional": true,
             "version": "~2.1000.0"
-        },
-        "framework-envisense": {
-              "type": "framework",
-              "optional": false,
-              "version": "~3.2.7"
         }
     }
 }
