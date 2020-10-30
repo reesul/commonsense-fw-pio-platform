@@ -14,8 +14,8 @@
     },
     "version": "0.3.2",
     "packageRepositories": [
-        "https://bitbucket.org/ccsg-res/commonsense-pio-framework/raw/master/manifest.json",
         "https://dl.bintray.com/platformio/dl-packages/manifest.json",
+        "https://bitbucket.org/ccsg-res/commonsense-pio-framework/raw/master/manifest.json",
         "http://dl.platformio.org/packages/manifest.json",
         "https://raw.githubusercontent.com/eerimoq/simba/master/make/platformio/manifest.json"
       ],
@@ -42,7 +42,7 @@
         },
         "framework-commonsense": {
             "type": "framework",
-            "optional": true,
+            "optional": false,
             "version": ">=0.4.0"
         },
         "tool-bossac": {
