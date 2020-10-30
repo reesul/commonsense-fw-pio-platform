@@ -43,7 +43,7 @@
         "framework-commonsense": {
             "type": "framework",
             "optional": false,
-            "version": ">=0.3.0"
+            "version": "~0.2.0"
         },
         "tool-bossac": {
             "type": "uploader",
