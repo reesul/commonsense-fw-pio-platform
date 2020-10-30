@@ -15,7 +15,7 @@
     "version": "0.3.1",
     "packageRepositories": [
         "https://bitbucket.org/ccsg-res/envisense-pio/raw/master/manifest.json",
-        "https://bitbucket.org/ccsg-res/commonsense-pio-framework/raw/HEAD/manifest.json",
+        "https://bitbucket.org/ccsg-res/commonsense-pio-framework/raw/master/manifest.json",
         "https://dl.bintray.com/platformio/dl-packages/manifest.json",
         "http://dl.platformio.org/packages/manifest.json",
         "https://raw.githubusercontent.com/eerimoq/simba/master/make/platformio/manifest.json"
