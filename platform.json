@@ -20,6 +20,7 @@
         "https://bitbucket.org/ccsg-res/commonsense-pio-framework/src/master/manifest.json",
         "http://bitbucket.org/ccsg-res/commonsense-pio-framework/src/master/manifest.json",
         "http://dl.platformio.org/packages/manifest.json",
+        "https://bitbucket.org/ccsg-res/envisense-pio/raw/master/manifest.json",
         "https://raw.githubusercontent.com/eerimoq/simba/master/make/platformio/manifest.json"
     ],
     "frameworks": {
@@ -42,6 +43,11 @@
             "type": "framework",
             "optional": false,
             "version": "~1.2.0"
+        },
+        "tool-envisense-bossac": {
+          "type": "uploader",
+          "optional": true,
+          "version": "~1.9.1"
         },
         "framework-commonsense": {
             "type": "framework",
