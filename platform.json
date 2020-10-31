@@ -46,7 +46,7 @@
         },
         "tool-envisense-bossac": {
           "type": "uploader",
-          "optional": true,
+          "optional": false,
           "version": "~1.9.1"
         },
         "framework-commonsense": {
