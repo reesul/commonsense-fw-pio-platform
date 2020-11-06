@@ -86,7 +86,16 @@ env.Append(
         os.path.join(CMSIS_ATMEL_DIR, "CMSIS", "Device", "ATMEL"),
         os.path.join(CMSIS_ATMEL_DIR, "CMSIS", "Device", "ATMEL", board.get("build.variant")),
         os.path.join(FRAMEWORK_DIR),
-        os.path.join(FRAMEWORK_DIR, "core")
+        os.path.join(FRAMEWORK_DIR, "core"),
+        os.path.join(FRAMEWORK_DIR, "hal"),
+        os.path.join(FRAMEWORK_DIR, "hal/include"),
+        os.path.join(FRAMEWORK_DIR, "hal/utils/include"),
+        os.path.join(FRAMEWORK_DIR, "hal/utils/src"),
+        os.path.join(FRAMEWORK_DIR, "hal/src"),
+        os.path.join(FRAMEWORK_DIR, "hpl"),
+        os.path.join(FRAMEWORK_DIR, "hri"),
+        os.path.join(FRAMEWORK_DIR, "sample"),
+
     ],
 
     LIBPATH=[
@@ -139,6 +148,6 @@ libs.append(env.BuildLibrary(
 env.Prepend(LIBS=libs)
  
  #TODO: make board specific files that have a few different flags
-env.Append(
-    CPPDEFINES = ("__CS_V_2_0__")
-)
+# env.Append(
+#     CPPDEFINES = ("__CS_V_2_0__")
+# )
