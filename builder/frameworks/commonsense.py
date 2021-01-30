@@ -53,6 +53,9 @@ env.Append(
         "-mthumb",
         "-nostdlib",
         "--param", "max-inline-insns-single=500"
+        "-mfloat-abi=hard",
+        "-mfpu=fpv4-sp-d16",
+        "-march=armv7e-m"
     ],
 
     CXXFLAGS=[
@@ -69,6 +72,9 @@ env.Append(
     LINKFLAGS=[
         "-Os",
         "-mthumb",
+        "-mfloat-abi=hard",
+        "-mfpu=fpv4-sp-d16",
+        "-march=armv7e-m"
         # "-Wl,--cref", # don't enable it, it prints Cross Reference Table
         "-Wl,--gc-sections",
         "-Wl,--check-sections",
@@ -87,14 +93,15 @@ env.Append(
         os.path.join(CMSIS_ATMEL_DIR, "CMSIS", "Device", "ATMEL", board.get("build.variant")),
         os.path.join(FRAMEWORK_DIR),
         os.path.join(FRAMEWORK_DIR, "core"),
-        os.path.join(FRAMEWORK_DIR, "hal"),
-        os.path.join(FRAMEWORK_DIR, "hal/include"),
-        os.path.join(FRAMEWORK_DIR, "hal/utils/include"),
-        os.path.join(FRAMEWORK_DIR, "hal/utils/src"),
-        os.path.join(FRAMEWORK_DIR, "hal/src"),
-        os.path.join(FRAMEWORK_DIR, "hpl"),
-        os.path.join(FRAMEWORK_DIR, "hri"),
-        os.path.join(FRAMEWORK_DIR, "sample"),
+        os.path.join(FRAMEWORK_DIR, "atmel_studio_drivers/hal"),
+        os.path.join(FRAMEWORK_DIR, "atmel_studio_drivers/hal/include"),
+        os.path.join(FRAMEWORK_DIR, "atmel_studio_drivers/hal/utils/include"),
+        os.path.join(FRAMEWORK_DIR, "atmel_studio_drivers/hal/utils/src"),
+        os.path.join(FRAMEWORK_DIR, "atmel_studio_drivers/hal/src"),
+        os.path.join(FRAMEWORK_DIR, "atmel_studio_drivers/hpl"),
+        os.path.join(FRAMEWORK_DIR, "atmel_studio_drivers/hri"),
+        os.path.join(FRAMEWORK_DIR, "atmel_studio_drivers/Config"),
+        # os.path.join(FRAMEWORK_DIR, "sample"),
 
     ],
 
@@ -117,13 +124,12 @@ if "BOARD" in env:
 
 env.Prepend(
     CCFLAGS=[
-        "-mfloat-abi=hard",
-        "-mfpu=fpv4-sp-d16"
+
     ],
 
     LINKFLAGS=[
-        "-mfloat-abi=hard",
-        "-mfpu=fpv4-sp-d16"
+
+
     ],
 
     LIBS=["arm_cortexM4lf_math"]
@@ -143,6 +149,11 @@ libs = []
 libs.append(env.BuildLibrary(
     os.path.join("$BUILD_DIR", "FrameworkCommonSense"),
     os.path.join(FRAMEWORK_DIR, "core")
+))
+
+libs.append(env.BuildLibrary(
+    os.path.join("$BUILD_DIR", "AtmelStudioDrivers"),
+    os.path.join(FRAMEWORK_DIR, "atmel_studio_drivers")
 ))
 
 env.Prepend(LIBS=libs)
