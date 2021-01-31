@@ -52,7 +52,8 @@ env.Append(
         "-Wall",
         "-mthumb",
         "-nostdlib",
-        "--param", "max-inline-insns-single=500"
+        "--param", 
+        "max-inline-insns-single=500",
         "-mfloat-abi=hard",
         "-mfpu=fpv4-sp-d16",
         "-march=armv7e-m"
@@ -74,7 +75,7 @@ env.Append(
         "-mthumb",
         "-mfloat-abi=hard",
         "-mfpu=fpv4-sp-d16",
-        "-march=armv7e-m"
+        "-march=armv7e-m",
         # "-Wl,--cref", # don't enable it, it prints Cross Reference Table
         "-Wl,--gc-sections",
         "-Wl,--check-sections",
