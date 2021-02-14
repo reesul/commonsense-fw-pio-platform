@@ -12,7 +12,7 @@
         "type": "git",
         "url": "https://git@bitbucket.org/ccsg-res/commonsense-pio-platform.git"
     },
-    "version": "0.5.0",
+    "version": "0.5.1",
     "packageRepositories": [
         "https://dl.bintray.com/platformio/dl-packages/manifest.json",
         "https://bitbucket.org/ccsg-res/commonsense-pio-framework/raw/master/manifest.json",
@@ -48,7 +48,7 @@
         "framework-commonsense": {
             "type": "framework",
             "optional": false,
-            "version": ">=0.6.0"
+            "version": ">=0.7.0"
         },
         "tool-bossac": {
             "type": "uploader",
