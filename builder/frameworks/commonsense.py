@@ -46,7 +46,8 @@ env.Append(
     ],
 
     CCFLAGS=[
-        "-Os",  # optimize for size
+        # "-Os",  # optimize for size
+        "-O0"
         "-ffunction-sections",  # place each function in its own section
         "-fdata-sections",
         "-Wall",
@@ -71,7 +72,8 @@ env.Append(
     ],
 
     LINKFLAGS=[
-        "-Os",
+        # "-Os",
+        "-O0"
         "-mthumb",
         "-mfloat-abi=hard",
         "-mfpu=fpv4-sp-d16",
