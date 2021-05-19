@@ -23,6 +23,7 @@ This borrows heavily from scripts developed by Adafruit and Arduino for Platform
 """
 
 import os
+from glob import glob
 from SCons.Script import DefaultEnvironment
 
 
@@ -93,7 +94,7 @@ env.Append(
     CPPPATH=[
         os.path.join(CMSIS_DIR, "CMSIS", "Include"),
         os.path.join(CMSIS_ATMEL_DIR, "CMSIS", "Device", "ATMEL"),
-        os.path.join(CMSIS_ATMEL_DIR, "CMSIS", "Device", "ATMEL", board.get("build.variant")),
+        os.path.join(CMSIS_ATMEL_DIR, "CMSIS", "Device", "ATMEL", board.get("build.variant"), "include"),
         os.path.join(FRAMEWORK_DIR),
         os.path.join(FRAMEWORK_DIR, "core"),
         os.path.join(FRAMEWORK_DIR, "atmel_studio_drivers/hal"),
@@ -102,8 +103,9 @@ env.Append(
         os.path.join(FRAMEWORK_DIR, "atmel_studio_drivers/hal/utils/src"),
         os.path.join(FRAMEWORK_DIR, "atmel_studio_drivers/hal/src"),
         os.path.join(FRAMEWORK_DIR, "atmel_studio_drivers/hpl"),
+        *[os.path.join(FRAMEWORK_DIR, "atmel_studio_drivers/hpl", p) for p in glob(os.path.join(FRAMEWORK_DIR, "atmel_studio_drivers/hpl/*"))],
         os.path.join(FRAMEWORK_DIR, "atmel_studio_drivers/hri"),
-        os.path.join(FRAMEWORK_DIR, "atmel_studio_drivers/Config"),
+        os.path.join(FRAMEWORK_DIR, "atmel_studio_drivers/config"),
         # os.path.join(FRAMEWORK_DIR, "sample"),
 
     ],
